@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 public static class ArraysTester {
     /// <summary>
     /// Entry point for the tests
@@ -34,19 +36,12 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
-        List<double> result = new List<double>();
-        while (number / Convert.ToDouble(length)!=1)
+     double[] result = new double[length];
+         for (int i = 0; i < length; i++)
         {
-            number += number;
-            result.Add(number);
-
-            // TODO Problem 1 Start
-            // Remember: Using comments in your program, write down your process for solving this problem
-            // step by step before you write the code. The plan should be clear enough that it could
-            // be implemented by another person.
+            result[i]=number*(i+1);
         }
-          return result.ToArray();
-       // return new double[0]; // replace this return statement with your own
+        return result;
     }
     
     /// <summary>
