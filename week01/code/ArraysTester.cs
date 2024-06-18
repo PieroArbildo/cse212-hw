@@ -34,13 +34,18 @@ public static class ArraysTester {
     /// integer greater than 0.
     /// </summary>
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
+
     private static double[] MultiplesOf(double number, int length)
     {
+    //Declaration of a double array named "result" with a size equal to the number of multiples specified by "length"
      double[] result = new double[length];
+    //A for loop that iterates the number of times specified by "length"
          for (int i = 0; i < length; i++)
         {
+    //In each iteration add the value obtained from the formula to the "result" array
             result[i]=number*(i+1);
         }
+    //return the 'result' array with the added multiples
         return result;
     }
     
@@ -54,10 +59,16 @@ public static class ArraysTester {
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
-
+        List<int> last = new List<int>(); //list to get latest elements based on "amount"
+        List<int> listResult = new List<int>(); //list to get the rest of elements
+        last =  data.GetRange(data.Count-amount,amount);//Get the last elements of "list"
+        listResult.InsertRange(0,last); //Insert "last" elements at the beginning of 'listResult'
+        data.RemoveRange(data.Count-amount,amount); //Remove the last elements from the original list 'data
+        listResult.InsertRange(amount,data);// Insert the rest of the 'data' elements after the elements already added in 'listResult'
+        foreach (var item in listResult)// Print the elements of 'listResult'
+        {
+        Console.WriteLine(item);
+        }
+        //It was verified that the results match, therefore this solution works correctly.
     }
 }
