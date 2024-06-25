@@ -31,11 +31,15 @@ public class TakingTurnsQueue {
     /// </summary>
     public void GetNextPerson() {
         if (_people.IsEmpty())
-            Console.WriteLine("No one in the queue.");
+            throw new InvalidOperationException("No one in the queue."); //Added exception that is thrown when there is nothing in the queue. TEST 5
+            //Console.WriteLine("No one in the queue.");
         else {
             Person person = _people.Dequeue();
             if (person.Turns > 1) {
                 person.Turns -= 1;
+                _people.Enqueue(person);
+            }
+             if (person.Turns == 0) { //if added, If the number of turns is "0" enter the queue TEST3
                 _people.Enqueue(person);
             }
 

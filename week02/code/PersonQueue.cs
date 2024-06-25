@@ -11,7 +11,7 @@ public class PersonQueue {
     /// </summary>
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person) {
-        _queue.Insert(Length, person); // index is changed from "0" to Length, so that elements enter the queue at the last index
+        _queue.Insert(Length, person); // index is changed from "0" to Length, so that elements enter the queue at the last index TEST 1
     }
 
     public Person Dequeue() {

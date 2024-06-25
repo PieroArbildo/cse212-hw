@@ -17,6 +17,7 @@
             players.GetNextPerson();
         // Defect(s) Found: 
 
+        // index is changed from "0" to Length, so that elements enter the queue at the last index TEST 1");
         Console.WriteLine("---------");
 
         // Test 2
@@ -32,6 +33,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
+        // index is changed from "0" to Length, so that elements enter the queue at the last index TEST 2");
 
         players.AddPerson("George", 3);
         // Console.WriteLine(players);
@@ -58,6 +60,7 @@
         }
         // Defect(s) Found: 
 
+        //if added, If the number of turns is "0" enter the queue TEST3
         Console.WriteLine("---------");
 
          // Test 4
@@ -66,7 +69,7 @@
         // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
         Console.WriteLine("Test 4");
         players = new TakingTurnsQueue();
-        players.AddPerson("Tim", -3);
+        players.AddPerson("Tim", 0); //The index was changed from "-3" to "0" so that the person always remains in the queue, TEST 4 OK
         players.AddPerson("Sue", 3);
         // Console.WriteLine(players);
         for (int i = 0; i < 10; i++) {
@@ -84,5 +87,7 @@
         players = new TakingTurnsQueue();
         players.GetNextPerson();
         // Defect(s) Found:
+
+        //Added exception that is thrown when there is nothing in the queue. TEST 5
     }
 }
