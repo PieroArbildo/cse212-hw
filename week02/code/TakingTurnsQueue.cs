@@ -7,7 +7,8 @@
 /// less than they will stay in the queue forever.  If a person is out of turns then they will 
 /// not be added back into the queue.
 /// </summary>
-public class TakingTurnsQueue {
+public class TakingTurnsQueue
+{
     private readonly PersonQueue _people = new();
 
     public int Length => _people.Length;
@@ -17,7 +18,8 @@ public class TakingTurnsQueue {
     /// </summary>
     /// <param name="name">Name of the person</param>
     /// <param name="turns">Number of turns remaining</param>
-    public void AddPerson(string name, int turns) {
+    public void AddPerson(string name, int turns)
+    {
         var person = new Person(name, turns);
         _people.Enqueue(person);
     }
@@ -29,25 +31,29 @@ public class TakingTurnsQueue {
     /// person has an infinite number of turns.  An error message is displayed 
     /// if the queue is empty.
     /// </summary>
-    public void GetNextPerson() {
+    public void GetNextPerson()
+    {
         if (_people.IsEmpty())
-            throw new InvalidOperationException("No one in the queue."); //Added exception that is thrown when there is nothing in the queue. TEST 5
-            //Console.WriteLine("No one in the queue.");
-        else {
+            throw new InvalidOperationException("No one in the queue.");
+        else
+        {
             Person person = _people.Dequeue();
-            if (person.Turns > 1) {
+
+            if (person.Turns <= 0)
+            {
+                _people.Enqueue(person);
+            }
+            else if (person.Turns > 1)
+            {
                 person.Turns -= 1;
                 _people.Enqueue(person);
             }
-             if (person.Turns == 0) { //if added, If the number of turns is "0" enter the queue TEST3
-                _people.Enqueue(person);
-            }
-
             Console.WriteLine(person.Name);
         }
     }
 
-    public override string ToString() {
+    public override string ToString()
+    {
         return _people.ToString();
     }
 }

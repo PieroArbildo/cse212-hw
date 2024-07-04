@@ -20,9 +20,9 @@
     // Test Cases
 
     // Test 1
-    // Scenario: Order elements by priority number when using the Enqueue method
-    // Expected Result: [tany (Pri:0), tum (Pri:1), tim (Pri:2), tom (Pri:3), tunes (Pri:3), tiny (Pri:8), tuna (Pri:9)]
-    // Defect(s) Found: There was no code that ordered by priority number inside the "Enqueue" method.
+    // Scenario: Testing Enqueue add item method at the end of the queue
+    // Expected Result: [tim (Pri:2), tom (Pri:3), tum (Pri:1), tiny (Pri:8), tuna (Pri:9), tunes (Pri:3), tany (Pri:0)]
+    // Defect(s) Found: The Enqueue method works as expected
     Console.WriteLine("Test 1");
 
     Console.WriteLine(priorityQueue);
@@ -32,7 +32,7 @@
     // Test 2
     // Scenario: Delete and print element with highest priority using Dequeue method
     // Expected Result: tuna
-    // Defect(s) Found: It printed the highest priority -1 which made it not the last,
+    // Defect(s) Found: It printed the highest priority -1 which made it not the last, changed >= to just > to remove the highest priority
     // RemoveAt method was added that takes the last index
     Console.WriteLine("Test 2");
 
@@ -42,7 +42,7 @@
 
     // Test 3
     // Scenario: add elements with the same priority and delete to verify that FIFO is met
-    // Expected Result: [tim (Pri:5), tom (Pri:5)]
+    // Expected Result: [tom (Pri:5), tany (Pri:5)]
     Console.WriteLine("Test 3");
 
     var priorityQueue3 = new PriorityQueue();

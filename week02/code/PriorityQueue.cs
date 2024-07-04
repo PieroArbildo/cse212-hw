@@ -13,7 +13,6 @@
     {
         var newNode = new PriorityItem(value, priority);
         _queue.Add(newNode);
-        _queue.Sort((x, y) => x.Priority.CompareTo(y.Priority)); // Sort by priority
     }
 
     public String Dequeue()
@@ -28,14 +27,16 @@
         // Find the index of the item with the highest priority to remove
         var highPriorityIndex = 0;
         for (int index = 1; index < _queue.Count; index++)
-        { // _queue.Count -1 The "-1" was removed so that it does not take the penultimate highest priority, but rather the last highest
-            if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
+        {
+            if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
+            {
                 highPriorityIndex = index;
+            }
         }
 
         // Remove and return the item with the highest priority
         var value = _queue[highPriorityIndex].Value;
-        _queue.RemoveAt(highPriorityIndex); // RemoveAt method was added that takes the last index
+        _queue.RemoveAt(highPriorityIndex); // se agrego linea
         return value;
     }
 
