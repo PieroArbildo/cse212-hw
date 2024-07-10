@@ -193,7 +193,64 @@ public static class SetsAndMapsTester
     private static bool IsAnagram(string word1, string word2)
     {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // Remove spaces and convert to lowercase
+        string text1 = word1.Replace(" ", "").ToLower();
+        string text2 = word2.Replace(" ", "").ToLower();
+
+        // If the lengths are different, they cannot be anagrams
+        if (text1.Length != text2.Length)
+        {
+            return false;
+        }
+
+        // 2 dictionaries are created that will be used for character comparison
+        Dictionary<char, int> dic1 = new Dictionary<char, int>();
+        Dictionary<char, int> dic2 = new Dictionary<char, int>();
+
+        //Loop through all characters, count how many times each character appears in the string text, and store this information in the dict
+
+        foreach (char character in text1)
+        {
+            if (dic1.ContainsKey(character))
+            {
+                dic1[character]++;
+            }
+            else
+            {
+                dic1.Add(character, 1);
+            }
+        }
+
+        foreach (char character in text2)
+        {
+            if (dic2.ContainsKey(character))
+            {
+                dic2[character]++;
+            }
+            else
+            {
+                dic2.Add(character, 1);
+            }
+        }
+
+
+        // Compare character counts
+        foreach (var pair in dic1)
+        {
+            // Check if text2 does not contain the same character as text1
+            if (!dic2.ContainsKey(pair.Key))
+            {
+                return false;
+            }
+
+            // Check if the number of times the character appears is different in text2
+            if (dic2[pair.Key] != pair.Value)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
