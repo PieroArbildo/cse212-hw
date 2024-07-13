@@ -36,7 +36,7 @@ public class Maze
         // Check if movement to the left is possible
         if (_mazeMap[(_currX, _currY)][0])
         {
-            _currX -= 1;  //Update map to move left
+            _currX -= 1;  //Update Current location to move left
         }
         else
         {
@@ -54,7 +54,7 @@ public class Maze
         // Check if movement to the right is possible
         if (_mazeMap[(_currX, _currY)][1])
         {
-            _currX += 1;  //Upgrade map to move right
+            _currX += 1;  //Update Current location to move right
         }
         else
         {
@@ -72,7 +72,7 @@ public class Maze
         // Check if it is possible to move up
         if (_mazeMap[(_currX, _currY)][2])
         {
-            _currY -= 1;  //Update map to move up
+            _currY -= 1;  //Update Current location to move up
         }
         else
         {
@@ -90,7 +90,7 @@ public class Maze
         //Check if it is possible to move down
         if (_mazeMap[(_currX, _currY)][3])
         {
-            _currY += 1;  //Update map to move down
+            _currY += 1;  //Update Current location to move down
         }
         else
         {
